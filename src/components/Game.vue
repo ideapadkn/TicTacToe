@@ -63,12 +63,16 @@ const handleMessage = () => {
 </script>
 
 <template>
-  <div class="flex h-[100dvh] justify-center items-center">
-    <h2>{{ handleMessage() }}</h2>
-    <button v-if="gameOver !== ''" @click="handlerReset()">Reset</button>
+  <div class="flex h-[100dvh] justify-center items-center flex-col">
+    <div class="mb-8 flex gap-3">
+      <h2 class="font-semibold text-2xl">{{ handleMessage() }}</h2>
+      <button class="py-1 px-2 bg-green-500 rounded text-white" v-if="gameOver !== ''"
+        @click="handlerReset()">Reset</button>
+    </div>
 
-    <div class="grid grid-cols-3">
-      <div class="w-[50px] h-[50px] bg-slate-200 text-black border-2" v-for="value, key in tics" :key="key" @click="handleClick(key)">
+    <div class="grid grid-cols-3 border-2 border-slate-600">
+      <div class="w-[100px] h-[100px] bg-slate-200 text-black border-2 border-slate-600 flex items-center justify-center text-3xl"
+        v-for="value, key in tics" :key="key" @click="handleClick(key)">
         {{ value === 'One' ? 'X' : value === 'Two' ? 'O' : '' }}
       </div>
     </div>
